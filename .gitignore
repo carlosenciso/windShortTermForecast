@@ -1,7 +1,7 @@
-# *.xlsx
-# *.xls
+*.xlsx
+*.xls
 *.lnk
-# *.ipynb
+*.ipynb
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -134,6 +134,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-# .*.py
-# *.xlsx
-# *.xls
+.*.py
+*.xlsx
+*.xls
