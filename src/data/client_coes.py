@@ -115,6 +115,9 @@ if __name__ == '__main__':
             #-- Set data format --#
             dataset = getFormatData(dataset)
             logger.info(f"Coes Dataset was retrieved! Shape: {dataset.shape}")
+            #-- Export as parquet --#
+            dataset.to_parquet('../../dataset/currentGen.parquet')
+            logger.info(f"Coes Dataset was stored!")
         else:
             logger.warning("No data was retrieved from any of the codes")
     except Exception as e:
