@@ -1,3 +1,22 @@
+#!/home/cenciso/miniconda3/envs/py37/bin/python
+# -*- coding:utf-8 -*-
+#---------------------------------------------------------------------------
+# @Project: /home/cenciso/Documents/WORK/ENGIE/DashBoard/windShortTermForecast/Scripts
+# @File: /home/cenciso/Documents/WORK/ENGIE/DashBoard/windShortTermForecast/Scripts/myCss.py
+# @Author: Carlos Enciso Ojeda
+# @Email: carlos.enciso.o@gmail.com
+# @Created Date: Monday, September 1st 2025, 11:29:15 pm
+# -----
+# @Last Modified: Monday, 1st September 2025 11:29:15 pm
+# @Modified By: Carlos Enciso Ojeda at <carlos.enciso.o@gmail.com>
+# -----
+# @Copyright (c) 2025 Peruvian Geophysical Institute
+# @License: MIT
+# -----
+# @HISTORY:
+# Date                   	By   	Comments
+# ----                   	----   	----------
+#---------------------------------------------------------------------------
 #!/home/cenciso/anaconda3/envs/dash/bin/python
 #-- Write CSS --#
 #-- Create the assets folder and CSS file --#
