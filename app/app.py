@@ -1,5 +1,11 @@
-#!/home/cenciso/anaconda3/envs/dash/bin/python
-#-- Main Code --#
+# -*- coding:utf-8 -*-
+#-----------------------------------------------------
+# @Project: ./windShortTermForecast/app/
+# @File: ./windShortTermForecast/app/app.py
+# @Author: Carlos Enciso Ojeda
+# @Email: carlos.enciso.o@gmail.com
+# @Created Date: Tuesday, Sept 09th 2025, 9:21:10 am
+#-----------------------------------------------------
 #-- Import modules --#
 import dash
 import time
