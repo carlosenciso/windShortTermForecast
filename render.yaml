@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: wind-forecast-dashboard
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && mkdir -p dataset && cd src/data && python client_coes.py
+    startCommand: python app.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.0
