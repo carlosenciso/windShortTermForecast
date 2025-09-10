@@ -12,6 +12,7 @@ import requests
 import datetime
 import logging
 import warnings
+import os
 warnings.filterwarnings('ignore')
 #-- logging --#
 logging.basicConfig(
@@ -97,6 +98,9 @@ if __name__ == '__main__':
         endDate = datetime.datetime.now()
         startDate = endDate - datetime.timedelta(days=5)
         logger.info(f"Starting data retrieval from {startDate.strftime('%Y-%b-%d')} to {endDate.strftime('%Y-%b-%d')}")
+        #-- Create Dataset Dir --#
+        parquet_path = '../../dataset/currentGen.parquet'
+        os.makedirs(os.path.dirname(parquet_path), exist_ok=True)
         #-- Iterations through codes --#
         container = []
         for code in range(0, 4):
@@ -116,7 +120,7 @@ if __name__ == '__main__':
             dataset = getFormatData(dataset)
             logger.info(f"Coes Dataset was retrieved! Shape: {dataset.shape}")
             #-- Export as parquet --#
-            dataset.to_parquet('../../dataset/currentGen.parquet')
+            dataset.to_parquet(parquet_path)
             logger.info(f"Coes Dataset was stored!")
         else:
             logger.warning("No data was retrieved from any of the codes")
