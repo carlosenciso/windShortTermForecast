@@ -231,18 +231,17 @@ import os
 #=======================
 #    Read Gen Dataset 
 #=======================
-# Ruta corregida para Render - desde la raíz del proyecto
+parquet_path = '../dataset/currentGen.parquet'
 try:
-    dataset = pd.read_parquet('dataset/currentGen.parquet')
-    print("Parquet file loaded successfully")
+    if os.path.exists('/opt/render/project/dataset/currentGen.parquet'):
+        parquet_path = '/opt/render/project/dataset/currentGen.parquet'
+        dataset = pd.read_parquet(parquet_path)
+        print(f"Data loaded from: {parquet_path}")
+    else:
+        dataset = pd.read_parquet(parquet_path)
+        print(f"Data loaded from: {parquet_path}")
 except FileNotFoundError:
-    print("Parquet file not found. Creating empty dataset for testing.")
-    # Dataset vacío para que no falle la app
-    dataset = pd.DataFrame({
-        'date': pd.date_range(start='2024-01-01', periods=24, freq='H'),
-        'name': ['W.F. Punta Lomitas'] * 24,
-        'power': range(24)
-    })
+    print(f"Archivo no encontrado: {parquet_path}")
 
 #========================
 # App & Theme Setup
