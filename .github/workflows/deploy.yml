@@ -4,6 +4,8 @@ on:
   push:
     branches: [test_v1.0]
   workflow_dispatch:
+  schedule:
+    cron: '0, * * * *'
 
 jobs:
   deploy:
@@ -66,4 +68,4 @@ jobs:
     - name: Show workflow status
       run: |
         echo "🎉 Workflow completed successfully!"
-        echo "📊 Artifacts uploaded for debugging"
+        echo "Artifacts uploaded for debugging"
