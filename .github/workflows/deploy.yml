@@ -35,7 +35,7 @@ jobs:
         [ -f dataset/currentGen.parquet ] && echo "Parquet file generated successfully" || echo "Parquet file not found"
 
     - name: Upload generated data
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dataset
         path: dataset/currentGen.parquet
