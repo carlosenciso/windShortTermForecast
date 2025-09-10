@@ -31,6 +31,7 @@ jobs:
 
     - name: Verify parquet file generation
       run: |
+        echo $pwd
         ls -la dataset/
         [ -f dataset/currentGen.parquet ] && echo "Parquet file generated successfully" || echo "Parquet file not found"
 
