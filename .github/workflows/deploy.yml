@@ -2,7 +2,7 @@ name: Deploy to Render
 
 on:
   push:
-    branches: [main]
+    branches: [test_v1.0]
   workflow_dispatch:
 
 jobs:
