@@ -95,7 +95,7 @@ if __name__ == '__main__':
     try:
         service = 'https://appserver.coes.org.pe/waMediciones/'
         endDate = datetime.datetime.now()
-        startDate = endDate - datetime.timedelta(days=1)
+        startDate = endDate - datetime.timedelta(days=5)
         logger.info(f"Starting data retrieval from {startDate.strftime('%Y-%b-%d')} to {endDate.strftime('%Y-%b-%d')}")
         #-- Iterations through codes --#
         container = []
