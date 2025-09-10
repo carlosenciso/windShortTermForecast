@@ -153,7 +153,7 @@ style={
     'width':'1440px',
     'height':'2200px',
     },
-# fluid=True
+fluid=True
 )
 
 #========================
