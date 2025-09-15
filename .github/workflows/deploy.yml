@@ -7,6 +7,10 @@ on:
   schedule:
     - cron: '0 * * * *'
 
+concurrency:
+  group: render-hourly-deploy
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -16,7 +20,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.9'
 
@@ -41,19 +45,19 @@ jobs:
       with:
         name: dataset
         path: dataset/currentGen.parquet
-    - name: Deploy to Render
+    - name: Trigger Render deployment
       env:
         RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
-        RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        RENDER_API_KEY:    ${{ secrets.RENDER_API_KEY }}
       run: |
-        # Subir el archivo Parquet a Render via API (si usas Render Disk)
-        echo "📤 Uploading data to Render..."
-        
-        # Trigger deploy
-        echo "🚀 Triggering Render deployment..."
-        response=$(curl -s -X POST \
+        echo "🚀 Triggering Render deployment for service: $RENDER_SERVICE_ID"
+        resp=$(curl -s -w "\n%{http_code}" -X POST \
           "https://api.render.com/v1/services/$RENDER_SERVICE_ID/deploys" \
           -H "Authorization: Bearer $RENDER_API_KEY" \
-          -H "Content-Type: application/json")
-        
-        echo "Deployment triggered: $response"
+          -H "Content-Type: application/json" \
+          -d '{}')
+        body=$(echo "$resp" | head -n1)
+        code=$(echo "$resp" | tail -n1)
+        echo "HTTP $code"
+        echo "$body"
+        [ "$code" -eq 201 ]
