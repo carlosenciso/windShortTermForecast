@@ -249,10 +249,9 @@ if __name__ == "__main__":
     POWER_LAW_ALPHA = 0.14
     DAYS_BACK = 7
 
-    # --- Authentication (without key_path, it uses env vars) ---
-    # Example local path usage:
-    GEE_Client(key_path="/home/cenciso/Downloads/my-gee-dashboard-c87a3d557c85.json")
-    # GEE_Client()  # Uses EE_SERVICE_ACCOUNT_JSON_B64 or EE_SERVICE_ACCOUNT_JSON_PATH
+    # --- Authentication (without key_path, it uses env vars) ---#
+    # GEE_Client(key_path="client.json")
+    GEE_Client()  # Uses EE_SERVICE_ACCOUNT_JSON_B64 or EE_SERVICE_ACCOUNT_JSON_PATH
 
     # --- Points of interest (hardcoded) ---
     fc = feature_collection_from_list(WIND_FARMS)
