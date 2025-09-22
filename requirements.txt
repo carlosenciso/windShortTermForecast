@@ -4,3 +4,5 @@ dash>=2.0.0
 dash-bootstrap-components>=1.0.0
 pyarrow>=6.0.0
 requests>=2.25.0
+earthengine-api>=0.1.390
+google-auth>=2.19.0
