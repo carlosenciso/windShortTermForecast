@@ -50,7 +50,7 @@ jobs:
     - name: Verify forecast parquet
       run: |
         ls -la dataset/ || true
-        [[ -f dataset/windSpeedFcs.parquet ] && echo "Forecast Parquet file generated successfully" || echo "Forecast Parquet file not found"
+        [ -f dataset/windSpeedFcs.parquet ] && echo "Forecast Parquet file generated successfully" || echo "Forecast Parquet file not found"
 
     - name: Upload generated data
       uses: actions/upload-artifact@v4
