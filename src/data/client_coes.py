@@ -99,7 +99,7 @@ if __name__ == '__main__':
         startDate = endDate - datetime.timedelta(days=5)
         logger.info(f"Starting data retrieval from {startDate.strftime('%Y-%b-%d')} to {endDate.strftime('%Y-%b-%d')}")
         #-- Create Dataset Dir --#
-        parquet_path = '../../dataset/currentGen.parquet'
+        parquet_path = '../dataset/currentGen.parquet'
         os.makedirs(os.path.dirname(parquet_path), exist_ok=True)
         #-- Iterations through codes --#
         container = []
