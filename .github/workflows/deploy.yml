@@ -40,12 +40,12 @@ jobs:
         ls -la dataset/ || true
         [ -f dataset/currentGen.parquet ] && echo "Parquet file generated successfully" || echo "Parquet file not found"
 
-    - name: Run gee_wind_forecasts.py (GFS/IFS)
+    - name: Run client_eeforecast.py (GFS/IFS)
       working-directory: src/data
       env:
         EE_SERVICE_ACCOUNT_JSON_B64: ${{ secrets.EE_SERVICE_ACCOUNT_JSON_B64 }}
       run: |
-        python gee_wind_forecasts.py
+        python client_eeforecast.py
         cd ../..
     - name: Verify forecast parquet
       run: |
