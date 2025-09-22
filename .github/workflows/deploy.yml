@@ -5,10 +5,10 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 */6 * * *'
 
 concurrency:
-  group: render-hourly-deploy
+  group: render-6h-deploy
   cancel-in-progress: true
 
 jobs:
@@ -29,22 +29,34 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run client_coes.py to generate data
+    - name: Run client_coes.py (observed)
       run: |
         cd src/data
         python client_coes.py
         cd ../..
 
-    - name: Verify parquet file generation
+    - name: Verify observed parquet
       run: |
-        ls -la dataset/
+        ls -la dataset/ || true
         [ -f dataset/currentGen.parquet ] && echo "Parquet file generated successfully" || echo "Parquet file not found"
+
+    - name: Run gee_wind_forecasts.py (GFS/IFS)
+      working-directory: src/data
+      env:
+        EE_SERVICE_ACCOUNT_JSON_B64: ${{ secrets.EE_SERVICE_ACCOUNT_JSON_B64 }}
+      run: |
+        python gee_wind_forecasts.py
+        cd ../..
+    - name: Verify forecast parquet
+      run: |
+        ls -la dataset/ || true
+        [[ -f dataset/windSpeedFcs.parquet ] && echo "Forecast Parquet file generated successfully" || echo "Forecast Parquet file not found"
 
     - name: Upload generated data
       uses: actions/upload-artifact@v4
       with:
         name: dataset
-        path: dataset/currentGen.parquet
+        path: dataset/
     - name: Trigger Render deployment
       env:
         RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
