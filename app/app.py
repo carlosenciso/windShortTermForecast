@@ -12,6 +12,9 @@ import dash_bootstrap_components as dbc
 import plotly.express as px
 
 #-- Load observed datasets --#
+print(os.system("pwd"))
+print(os.system("ls *"))
+print(os.system('ls /opt/render/project/dataset/*'))
 GEN_PARQUET_CANDIDATES = [
     os.environ.get("DATASET_PATH"),
     "../dataset/currentGen.parquet",
