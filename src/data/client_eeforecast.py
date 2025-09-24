@@ -250,8 +250,8 @@ if __name__ == "__main__":
     DAYS_BACK = 7
 
     # --- Authentication (without key_path, it uses env vars) ---#
-    GEE_Client(key_path="../client.json")
-    # GEE_Client()  # Uses EE_SERVICE_ACCOUNT_JSON_B64 or EE_SERVICE_ACCOUNT_JSON_PATH
+    # GEE_Client(key_path="../client.json")
+    GEE_Client()  # Uses EE_SERVICE_ACCOUNT_JSON_B64 or EE_SERVICE_ACCOUNT_JSON_PATH
 
     # --- Points of interest (hardcoded) ---
     fc = feature_collection_from_list(WIND_FARMS)
