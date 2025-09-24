@@ -21,7 +21,7 @@ env/
 *.swo
 
 # Jupyter Notebook
-Notebooks/
+# Notebooks/
 .ipynb_checkpoints
 
 # Unit test / coverage reports
