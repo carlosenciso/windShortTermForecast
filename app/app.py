@@ -15,6 +15,7 @@ import plotly.express as px
 print(os.system("pwd"))
 print(os.system("ls *"))
 print(os.system('ls /opt/render/project/dataset/*'))
+print('hi')
 GEN_PARQUET_CANDIDATES = [
     os.environ.get("DATASET_PATH"),
     "../dataset/currentGen.parquet",
