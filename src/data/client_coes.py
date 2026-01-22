@@ -56,6 +56,8 @@ def clientCoes(code:int, service, startDate,
 def getFormatData(dataset: pd.DataFrame, *args, **kwargs):
     try:
         idxNames = [c for c in dataset.columns if not any(f'h{w}' in c for w in range(1,49))]
+        print("COLUMNS RAW:", [repr(c) for c in dataset.columns])
+        print("COLUMNS STRIP:", [repr(str(c).strip()) for c in dataset.columns])
         data = dataset.melt(id_vars=idxNames, value_name='power', var_name='hour').sort_values(['NombreEquipo','Medifecha'])
         data['Medifecha'] = pd.to_datetime(data['Medifecha'], format="%Y-%m-%dT00:00:00")
         data['hour_timedelta'] = pd.to_timedelta(data['hour'].str.replace('h', '').astype(int) * 30, unit='m')

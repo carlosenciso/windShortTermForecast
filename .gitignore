@@ -41,6 +41,9 @@ coverage.xml
 .env
 .env.local
 
+# Docker
+Dockerfile
+
 # Mac OS
 .DS_Store
 
