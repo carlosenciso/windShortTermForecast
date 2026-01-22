@@ -111,7 +111,7 @@ if __name__ == '__main__':
         if container:
             dataset = pd.concat(container, ignore_index=False)
             #-- Discard duplicates --#
-            dataset = dataset.groupby("NombreEquipo", group_keys=False)\
+            dataset = dataset.groupby("NombreEquipo", group_keys=True)\
                            .apply(lambda x: x.drop_duplicates(subset=['Medifecha'], keep='last'))\
                            .reset_index()
             dropColumns = ['TensionEquipo', 'CodigoUbicacion', 'NombreUbicacion', 'index', '$id']
